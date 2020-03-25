@@ -56,7 +56,12 @@ gulp.task("browser-sync", function() {
 gulp.task("scss", function() {
   return gulp
     .src("app/styles/**/*.scss")
-    .pipe(sass().on("error", notify.onError()))
+    .pipe(
+      sass({
+        outputStyle: "expanded",
+        includePaths: require("node-bourbon").includePaths
+      }).on("error", notify.onError())
+    )
     .pipe(rename({ suffix: ".min", prefix: "" }))
     .pipe(autoprefixer(["last 15 versions"]))
     .pipe(cleanCSS())
