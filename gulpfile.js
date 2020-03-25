@@ -59,7 +59,7 @@ gulp.task("scss", function() {
     .pipe(
       sass({
         outputStyle: "expanded",
-        includePaths: require("bourbon").includePaths
+        includePaths: require("node-bourbon").includePaths
       }).on("error", notify.onError())
     )
     .pipe(rename({ suffix: ".min", prefix: "" }))
